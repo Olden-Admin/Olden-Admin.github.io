@@ -21,8 +21,9 @@ ul {
 }
 
 ul li {
-   margin: 10px;
-   }
+   margin: 10px 0;
+   font-size: 1.2em;
+}
 
 a.button-link {
    background-color: #007BFF;

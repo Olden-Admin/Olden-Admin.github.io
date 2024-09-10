@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2: Calculations</title>
+    <style>
+        #results { margin-top: 20px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Part 2: Calculations</h1>
+    <form id="calc-form">
+        <label for="num1">Enter first number:</label>
+        <input type="text" id="num1"><br><br>
+        <label for="num2">Enter second number:</label>
+        <input type="text" id="num2"><br><br>
+        <label for="num3">Enter third number:</label>
+        <input type="text" id="num3"><br><br>
+        <button type="button" onclick="processData()">Process</button>
+        <button type="reset">Clear</button>
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        function processData() {
+            const num1 = document.getElementById('num1').value;
+            const num2 = document.getElementById('num2').value;
+            const num3 = document.getElementById('num3').value;
+            
+            // Check if all inputs are numbers
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                document.getElementById('results').innerHTML = '<p class="error">Please enter valid numbers!</p>';
+                return;
+            }
+
+            const n1 = parseFloat(num1);
+            const n2 = parseFloat(num2);
+            const n3 = parseFloat(num3);
+
+            const sum = n1 + n2 + n3;
+            const avg = sum / 3;
+            const product = n1 * n2 * n3;
+            const smallest = Math.min(n1, n2, n3);
+            const largest = Math.max(n1, n2, n3);
+
+            document.getElementById('results').innerHTML = `
+                <p>Sum: ${sum}</p>
+                <p>Average: ${avg}</p>
+                <p>Product: ${product}</p>
+                <p>Smallest: ${smallest}</p>
+                <p>Largest: ${largest}</p>
+            `;
+        }
+    </script>
+    <br>
+    <a href="hw2.html">Back to Homework 2 Main Page</a>
+</body>
+</html>
