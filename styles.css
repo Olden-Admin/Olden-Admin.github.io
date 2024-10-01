@@ -1,3 +1,4 @@
+/* Base styling for the entire page */
 body {
    font-family: Arial, sans-serif;
    background-color: #f4f4f4;
@@ -5,39 +6,139 @@ body {
    margin: 0;
    padding: 20px;
    background-image: url('background.png'); /* Add your background image here */
-   background-size: cover; /* Ensures the background image covers the entire page */
+   background-size: cover; 
    background-repeat: no-repeat;
-   background-attachment: fixed; /* Keeps the background fixed during scrolling */
+   background-attachment: fixed;
 }
 
-h1 {
+/* Page Heading */
+h1, h2, h3 {
    text-align: center;
    color: #333;
 }
 
-ul {
-   list-style-type: none;
-   padding: 0;
+/* Container styling for the results box */
+#resultsBox {
+   background-color: #ffffff; /* White background for the content box */
+   border: 2px solid #333; /* Darker border around the results box */
+   padding: 10px; /* Adjusted padding to reduce vertical space */
+   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+   width: 80%; /* Make the width slightly smaller */
+   max-width: 600px; /* Ensure max width fits within typical screens */
+   margin: 10px auto; /* Adjusted margins */
+   max-height: 400px; /* Limit height to prevent overflow */
+   overflow-y: auto; /* If contents exceed, use scroll within the box */
+   line-height: 1.2; /* Adjust line spacing to make the box more compact */
+}
+/* Style for the labels to have a bordered appearance */
+label {
+   display: inline-block; /* Ensure consistent layout */
+   padding: 2px 10px; /* Space inside the labels */
+   margin: 4px 2px; /* Space around the labels */
+   border: 1px solid #ddd; /* Light border */
+   border-radius: 4px; /* Rounded corners for a button-like look */
+   background-color: #f9f9f9; /* Light gray background */
+   font-weight: bold; /* Make the text inside the label stand out */
+   color: #333; /* Dark text color for readability */
 }
 
-ul li {
-   margin: 10px 0;
-   font-size: 1.2em;
+/* Styling the labels when hovered (optional for better readability) */
+label:hover {
+   border-color: #bbb; /* Darken the border slightly on hover */
+   background-color: #fff; /* Lighten the background */
+   cursor: default; /* Show default cursor to indicate non-clickable */
 }
 
-a.button-link {
-   background-color: #007BFF;
-   color: white;
-   padding: 10px 20px;
-   text-decoration: none;
-   border-radius: 5px;
+/* Styling for the table inside the results box */
+table {
+   width: 100%; /* Full width table */
+   border-collapse: collapse; /* Remove spacing between cells */
+   margin-top: 5px; /* Reduced margin */
 }
 
-a.button-link:hover {
-   background-color: #0056b3;
+/* Styling for the table headers */
+table th {
+   background-color: #4CAF50; /* Green header background */
+   color: white; /* White text for headers */
+   padding: 4px; /* Adjusted padding */
+   text-align: left;
+   font-size: 14px; /* Smaller font size */
 }
 
-p {
+/* Styling for table data cells */
+table td {
+   padding: 4px; /* Reduced padding */
+   text-align: right; /* Right-align text in data cells */
+   font-size: 14px; /* Smaller font size */
+}
+
+/* Styling for table rows */
+table tr:nth-child(even) {
+   background-color: #f2f2f2; /* Light gray for alternating rows */
+}
+
+/* Aligning specific elements within table */
+td.align-left {
+   text-align: left; /* Use this class for left-aligned cells */
+}
+
+/* Style the box containing the final results */
+.total-box {
+   padding: 6px; /* Reduced padding for compactness */
+   margin-top: 5px; /* Reduced top margin */
+   border: 2px solid #333;
+   background-color: #ffffff;
    text-align: center;
-   font-size: 1.1em;
+   width: 100%;
+   max-height: 60px; /* Limit height of this box */
+   overflow: hidden; /* Ensure no overflow */
+}
+
+/* Input box styles */
+input[type="text"], input[type="number"], input[type="submit"], input[type="button"] {
+   margin: 4px 2px; /* Adjusted margins to reduce spacing */
+   padding: 4px; /* Adjusted padding */
+   border: 1px solid #ddd;
+   border-radius: 4px;
+   box-sizing: border-box;
+}
+
+/* Specific styling for read-only input boxes */
+input[readonly] {
+   background-color: #f9f9f9;
+   border: 1px solid #ddd;
+}
+
+/* Button styles */
+button, input[type="submit"], input[type="button"] {
+   padding: 6px 10px; /* Adjusted padding for compactness */
+   background-color: #4CAF50; /* Green button */
+   color: white;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   font-size: 14px; /* Reduced font size */
+}
+
+button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+   background-color: #45a049; /* Darker green on hover */
+}
+
+/* Navigation link styles */
+a {
+   text-decoration: none;
+   color: #4CAF50;
+   margin: 8px;
+}
+
+a:hover {
+   text-decoration: underline;
+}
+
+/* Media Query for Smaller Screens */
+@media screen and (max-width: 768px) {
+   #resultsBox, .total-box, table {
+       width: 95%; /* Use more of the screen width */
+       font-size: 12px; /* Smaller font for compactness */
+   }
 }
