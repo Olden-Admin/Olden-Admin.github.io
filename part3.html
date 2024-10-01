@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 3 - Student Grades</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="part1.js" defer></script>
+</head>
+<body>
+    <h1>Student Grades</h1>
+    <p>Enter the student's grades below and click "Calculate" to see the final result.</p>
+    
+    <form id="gradesForm">
+        <label for="homeworkAvg">Homework Average:</label>
+        <input type="number" id="homeworkAvg" name="homeworkAvg" min="0" max="100" required><br><br>
+
+        <label for="midExam">Mid-Term Exam Score:</label>
+        <input type="number" id="midExam" name="midExam" min="0" max="100" required><br><br>
+
+        <label for="finalExam">Final Exam Score:</label>
+        <input type="number" id="finalExam" name="finalExam" min="0" max="100" required><br><br>
+
+        <label for="participation">Participation:</label>
+        <input type="number" id="participation" name="participation" min="0" max="100" required><br><br>
+
+        <button type="button" onclick="calculateGrade()">Calculate</button>
+        <button type="reset">Clear</button>
+    </form>
+
+    <h2>Results:</h2>
+    <div id="resultsArea">
+        <!-- Results will be displayed here -->
+    </div>
+
+    <br>
+    <a href="hw3.html" class="button-link">Back to Homework 3 Main Page</a>
+</body>
+</html>
