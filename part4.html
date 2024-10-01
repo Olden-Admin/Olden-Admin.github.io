@@ -6,35 +6,111 @@
     <title>Homework 3 - Salesperson Commission Calculator</title>
     <link rel="stylesheet" href="styles.css">
     <script src="part2.js" defer></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        #container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #commissionForm {
+            width: 300px;
+            margin-right: 20px;
+        }
+
+        #resultsBox {
+            border: 2px solid #333;
+            padding: 10px;
+            background-color: #ffffff;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: right;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        td input {
+            width: 80px;
+            border: none;
+            text-align: right;
+            background-color: #f9f9f9;
+        }
+
+        .results-row {
+            background-color: #e0e0e0;
+        }
+
+        .summary {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Salesperson Commission Calculator</h1>
-    <p>Enter the name of the salesperson and the quantity of each item sold below. Click "Calculate" to view earnings.</p>
+    <div id="container">
+        <!-- Left-side form section -->
+        <form id="commissionForm">
+            <h4>Salesperson Commission Calculator</h4>
+            <p>Enter salesperson name and quantity of each item. Click "Calculate" to view earnings.</p>
 
-    <form id="commissionForm">
-        <label for="salespersonName">Salesperson Name:</label>
-        <input type="text" id="salespersonName" name="salespersonName" required><br><br>
+            <label for="salespersonName" >Salesperson Name:</label>
+            <input type="text" id="salespersonName" name="salespersonName" required><br><br>
 
-        <!-- Input fields for items sold -->
-        <label for="item1">Item 1 (Price: $20.99):</label>
-        <input type="number" id="item1" name="item1" min="0" step="1" required><br><br>
+            <label for="item1">Item 1 (Price: $20.99):</label>
+            <input type="number" id="item1" name="item1" min="0" step="1" required><br><br>
 
-        <label for="item2">Item 2 (Price: $12.75):</label>
-        <input type="number" id="item2" name="item2" min="0" step="1" required><br><br>
+            <label for="item2">Item 2 (Price: $12.75):</label>
+            <input type="number" id="item2" name="item2" min="0" step="1" required><br><br>
 
-        <label for="item3">Item 3 (Price: $9.95):</label>
-        <input type="number" id="item3" name="item3" min="0" step="1" required><br><br>
+            <label for="item3">Item 3 (Price: $9.95):</label>
+            <input type="number" id="item3" name="item3" min="0" step="1" required><br><br>
 
-        <label for="item4">Item 4 (Price: $35.89):</label>
-        <input type="number" id="item4" name="item4" min="0" step="1" required><br><br>
+            <label for="item4">Item 4 (Price: $35.89):</label>
+            <input type="number" id="item4" name="item4" min="0" step="1" required><br><br>
 
-        <button type="button" onclick="calculateCommission()">Calculate</button>
-        <button type="reset">Clear</button>
-    </form>
+            <button type="button" onclick="calculateCommission()">Calculate</button>
+            <button type="reset">Clear</button>
+        </form>
 
-    <h2>Results:</h2>
-    <div id="resultsArea" class="button-link">
-        <!-- Results will be displayed here -->
+        <!-- Right-side results box -->
+        <div id="resultsBox">
+            <h2>Sales Results:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item #</th>
+                        <th>Price</th>
+                        <th>Qty Sold</th>
+                        <th>Total $</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsTableBody">
+                    <!-- Table rows will be dynamically added here by JavaScript -->
+                </tbody>
+            </table>
+            <div class="summary" id="summaryArea">
+                <!-- Final Summary Results will be displayed here -->
+            </div>
+        </div>
     </div>
 
     <br>
