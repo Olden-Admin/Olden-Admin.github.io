@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 4 - Part 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Homework 4 - Product and Sum Calculations</h1>
+    <div id="results"></div>
+   </div>
+   <a href="hw4.html" class="button-link">Back to Homework 4</a>
+   <a href="index.html" class="button-link">Back to Home Page</a>
+    <script>
+        function calculateSeries() {
+            // For loop calculation
+            let productFor = 1, sumFor = 0;
+            for (let i = 5; i <= 25; i += 4) {
+                productFor *= i;
+                sumFor += i;
+            }
+
+            // While loop calculation
+            let productWhile = 1, sumWhile = 0, j = 3;
+            while (j <= 18) {
+                productWhile *= j;
+                sumWhile += j;
+                j += 3;
+            }
+
+            // Display results
+            document.getElementById('results').innerHTML = `
+                <p>The result of 5 * 9 * 13 * 17 * 21 * 25 is ${productFor.toLocaleString()}.</p>
+                <p>The result of 5 + 9 + 13 + 17 + 21 + 25 is ${sumFor.toLocaleString()}.</p>
+                <p>The result of 3 * 6 * 9 * 12 * 15 * 18 is ${productWhile.toLocaleString()}.</p>
+                <p>The result of 3 + 6 + 9 + 12 + 15 + 18 is ${sumWhile.toLocaleString()}.</p>
+            `;
+        }
+
+        calculateSeries();
+    </script>
+</body>
+</html>

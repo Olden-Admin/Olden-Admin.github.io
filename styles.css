@@ -6,7 +6,7 @@ body {
    margin: 0;
    padding: 20px;
    background-image: url('background.png'); /* Add your background image here */
-   background-size: cover; 
+   background-size: cover; /* Ensures the background image covers the entire page */
    background-repeat: no-repeat;
    background-attachment: fixed;
 }
@@ -141,4 +141,19 @@ a:hover {
        width: 95%; /* Use more of the screen width */
        font-size: 12px; /* Smaller font for compactness */
    }
+}
+/* Button link style */
+.button-link {
+   display: inline-block;
+   padding: 10px 15px;
+   color: #fff;
+   background-color: #4CAF50;
+   border-radius: 5px;
+   text-align: center;
+   text-decoration: none;
+   transition: background-color 0.3s;
+}
+
+.button-link:hover {
+   background-color: #45a049; /* Slightly darker on hover */
 }

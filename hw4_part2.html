@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 4 - Part 2</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .table { border-collapse: collapse; margin: 10px 0; }
+        .table, .table th, .table td { border: 1px solid black; padding: 4px; }
+        .table tr:nth-child(odd) { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Learn about Compound Interest</h1>
+    <div id="tables"></div>
+   <a href="hw4.html" class="button-link">Back to Homework 4</a>
+   <a href="index.html" class="button-link">Back to Home Page</a>
+    <script>
+        function compoundInterestTable(rate) {
+            let table = `<table class="table">
+                <tr><th>Year</th><th>Amount on Deposit</th><th>Interest Rate</th></tr>`;
+
+            let principal = 1000;
+            for (let year = 1; year <= 5; year++) {
+                let amount = principal * Math.pow(1 + rate, year);
+                table += `<tr><td>${year}</td><td>${amount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td><td>${rate}</td></tr>`;
+            }
+            table += `</table>`;
+            return table;
+        }
+
+        const rates = [0.05, 0.06, 0.07];
+        let tablesHTML = '';
+        rates.forEach(rate => tablesHTML += compoundInterestTable(rate));
+        document.getElementById('tables').innerHTML = tablesHTML;
+    </script>
+</body>
+</html>
