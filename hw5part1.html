@@ -5,39 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework 5 - Part 1</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="Homework5Part1.js"></script>
 </head>
 <body>
-    <h1>Homework 5 - Part 1: User Profile</h1>
-    <a href="Homework5.html">Back to Homework 5 Main Page</a>
-    <form id="userForm">
+    <h1>Homework 5 - Part 1</h1>
+    <a href="index.html">Back to Homework 5 Main Page</a>
+
+    <form id="part1Form">
         <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" name="fullName" required>
-        
+        <input type="text" id="fullName" name="fullName"><br>
+
         <p>Age Group:</p>
-        <label><input type="radio" name="ageGroup" value="less than 21"> Less than 21</label>
-        <label><input type="radio" name="ageGroup" value="between 21 and 50"> Between 21 and 50</label>
-        <label><input type="radio" name="ageGroup" value="older than 50"> Older than 50</label>
-        
+        <label><input type="radio" name="ageGroup" value="under21"> Less than 21</label>
+        <label><input type="radio" name="ageGroup" value="between21and50"> Between 21 and 50</label>
+        <label><input type="radio" name="ageGroup" value="over50"> Older than 50</label><br>
+
         <p>Browsers Used:</p>
-        <label><input type="checkbox" name="browsers" value="Firefox"> Firefox</label>
-        <label><input type="checkbox" name="browsers" value="Edge"> Edge</label>
-        <label><input type="checkbox" name="browsers" value="Chrome"> Chrome</label>
-        <label><input type="checkbox" name="browsers" value="Safari"> Safari</label>
-        
-        <p>Preferred Movie Type:</p>
-        <select id="movieType" name="movieType" required>
+        <label><input type="checkbox" name="browser" value="Firefox"> Firefox</label>
+        <label><input type="checkbox" name="browser" value="Edge"> Edge</label>
+        <label><input type="checkbox" name="browser" value="Chrome"> Chrome</label>
+        <label><input type="checkbox" name="browser" value="Safari"> Safari</label><br>
+
+        <label for="movieType">Favorite Movie Type:</label>
+        <select id="movieType" name="movieType">
             <option value="">Select</option>
             <option value="Action">Action</option>
             <option value="Comedy">Comedy</option>
             <option value="Drama">Drama</option>
             <option value="Documentary">Documentary</option>
             <option value="Science Fiction">Science Fiction</option>
-        </select>
-        
-        <button type="button" onclick="validateForm()">Submit</button>
+        </select><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
         <button type="reset">Clear</button>
     </form>
-    <div id="output"></div>
+
+    <div id="output" class="output"></div>
+
+    <script>
+        function submitForm() {
+            const output = document.getElementById("output");
+            output.innerHTML = ""; // Clear previous messages
+
+            const fullName = document.getElementById("fullName").value.trim();
+            const ageGroup = document.querySelector('input[name="ageGroup"]:checked');
+            const browsers = document.querySelectorAll('input[name="browser"]:checked');
+            const movieType = document.getElementById("movieType").value;
+
+            let isValid = true;
+
+            if (!fullName) {
+                output.innerHTML += "<p>Please enter your full name.</p>";
+                isValid = false;
+            }
+
+            if (!ageGroup) {
+                output.innerHTML += "<p>Please select an age group.</p>";
+                isValid = false;
+            }
+
+            if (browsers.length === 0) {
+                output.innerHTML += "<p>Please select at least one browser.</p>";
+                isValid = false;
+            }
+
+            if (!movieType) {
+                output.innerHTML += "<p>Please select a movie type.</p>";
+                isValid = false;
+            }
+
+            if (isValid) {
+                output.innerHTML = "<p>Thanks, your data was submitted!</p>";
+            }
+        }
+    </script>
 </body>
 </html>
