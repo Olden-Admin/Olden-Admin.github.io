@@ -3,29 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Part 2 - Navigation Menus</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Homework 5 - Part 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        select, button {
+            margin: 10px 0;
+            padding: 5px;
+            font-size: 16px;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .nav-button {
+            margin-right: 10px;
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h2>Part 2 - Navigation Menus</h2>
-    <a href="index.html" class="button-link">Back to Main Page</a>
-    <a href="homework5.html" class="button-link">Homework 5</a>
 
-    <h3>Select a website to visit:</h3>
-    <select onchange="navigateToSite(this.value)">
+    <h1>Homework 5 - Part 2: External Links</h1>
+
+    <div class="button-container">
+        <!-- Button to navigate back to Homework 5 main page -->
+        <button class="nav-button" onclick="window.location.href='homework5.html'">Back to Homework 5</button>
+        
+        <!-- Button to navigate back to Index page -->
+        <button class="nav-button" onclick="window.location.href='index.html'">Back to Main Page</button>
+    </div>
+
+    <h2>Select a Website to Open</h2>
+
+    <!-- First dropdown menu with onchange event -->
+    <label for="dropdown1">Choose a website (opens automatically):</label>
+    <select id="dropdown1" onchange="openWebsiteFromDropdown1()">
         <option value="">Select a website</option>
         <option value="https://www.google.com">Google</option>
         <option value="https://www.yahoo.com">Yahoo</option>
         <option value="https://www.w3schools.com/js/">W3 Schools</option>
-    </select><br><br>
+    </select>
 
-    <h3>Or use the button:</h3>
-    <select id="siteSelect">
+    <!-- Second dropdown menu with button event -->
+    <label for="dropdown2">Choose a website (opens on button click):</label>
+    <select id="dropdown2">
         <option value="">Select a website</option>
         <option value="https://my.smccd.edu/canvas/">San Mateo Community College</option>
         <option value="https://www.youtube.com/">YouTube 5</option>
         <option value="https://wpscan.com/">Word Press</option>
     </select>
-    <button onclick="openSelectedSite()">Go</button>
+    <button onclick="openWebsiteFromDropdown2()">Go</button>
 
-    <script src="hw5Part2.js"></script
+    <script>
+        // Function to open website from first dropdown with onchange event
+        function openWebsiteFromDropdown1() {
+            const dropdown1 = document.getElementById("dropdown1");
+            const url = dropdown1.value;
+            if (url) {
+                window.location.href = url; // Opens in the same window
+            }
+        }
+
+        // Function to open website from second dropdown with button click
+        function openWebsiteFromDropdown2() {
+            const dropdown2 = document.getElementById("dropdown2");
+            const url = dropdown2.value;
+            if (url) {
+                window.location.href = url; // Opens in the same window
+            } else {
+                alert("Please select a website to visit.");
+            }
+        }
+    </script>
+
+</body>
+</html>
