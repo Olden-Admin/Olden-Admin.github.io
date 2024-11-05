@@ -5,7 +5,7 @@ body {
    color: #333;
    margin: 0;
    padding: 20px;
-   background-image: url('background.png'); /* Add your background image here */
+   background-image: url('background.png');
    background-size: cover; /* Ensures the background image covers the entire page */
    background-repeat: no-repeat;
    background-attachment: fixed;
@@ -51,7 +51,7 @@ label:hover {
 
 /* Styling for the table inside the results box */
 table {
-   width: 100%; /* Full width table */
+   width: 80%; /* Full width table */
    border-collapse: collapse; /* Remove spacing between cells */
    margin-top: 5px; /* Reduced margin */
 }
@@ -130,6 +130,14 @@ a {
    color: #4CAF50;
    margin: 8px;
 }
+button {
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   padding: 10px;
+   margin: 5px;
+   cursor: pointer;
+}
 
 a:hover {
    text-decoration: underline;
@@ -152,8 +160,14 @@ a:hover {
    text-align: center;
    text-decoration: none;
    transition: background-color 0.3s;
+   margin: 5px
 }
 
 .button-link:hover {
    background-color: #45a049; /* Slightly darker on hover */
+}
+
+#output, #stateOutput {
+   margin-top: 10px;
+   color: red;
 }

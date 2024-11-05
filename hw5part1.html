@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 5 - Part 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="Homework5Part1.js"></script>
+</head>
+<body>
+    <h1>Homework 5 - Part 1: User Profile</h1>
+    <a href="Homework5.html">Back to Homework 5 Main Page</a>
+    <form id="userForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+        
+        <p>Age Group:</p>
+        <label><input type="radio" name="ageGroup" value="less than 21"> Less than 21</label>
+        <label><input type="radio" name="ageGroup" value="between 21 and 50"> Between 21 and 50</label>
+        <label><input type="radio" name="ageGroup" value="older than 50"> Older than 50</label>
+        
+        <p>Browsers Used:</p>
+        <label><input type="checkbox" name="browsers" value="Firefox"> Firefox</label>
+        <label><input type="checkbox" name="browsers" value="Edge"> Edge</label>
+        <label><input type="checkbox" name="browsers" value="Chrome"> Chrome</label>
+        <label><input type="checkbox" name="browsers" value="Safari"> Safari</label>
+        
+        <p>Preferred Movie Type:</p>
+        <select id="movieType" name="movieType" required>
+            <option value="">Select</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="Documentary">Documentary</option>
+            <option value="Science Fiction">Science Fiction</option>
+        </select>
+        
+        <button type="button" onclick="validateForm()">Submit</button>
+        <button type="reset">Clear</button>
+    </form>
+    <div id="output"></div>
+</body>
+</html>
