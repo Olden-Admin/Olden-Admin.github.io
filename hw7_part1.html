@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 1 - Dynamic Style Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: Arial, sans-serif; }
+        main {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Style Application</h1>
+
+    <!-- Form for selecting styles -->
+    <form id="styleForm">
+        <!-- Radio Buttons for Background Colors -->
+        <fieldset>
+            <legend>Choose Background Color:</legend>
+            <label><input type="radio" name="bgColor" value="lightblue"> Light Blue</label>
+            <label><input type="radio" name="bgColor" value="lightgreen"> Light Green</label>
+        </fieldset>
+
+        <!-- Checkboxes for Text Styles -->
+        <fieldset>
+            <legend>Choose Text Style:</legend>
+            <label><input type="checkbox" id="bold" value="bold"> Bold</label>
+            <label><input type="checkbox" id="italic" value="italic"> Italic</label>
+            <label><input type="checkbox" id="underline" value="underline"> Underline</label>
+        </fieldset>
+
+        <!-- Select Dropdown for Font Size -->
+        <fieldset>
+            <legend>Choose Font Size:</legend>
+            <select id="fontSize">
+                <option value="1em">Normal</option>
+                <option value="1.5em">Large</option>
+                <option value="2em">Extra Large</option>
+            </select>
+        </fieldset>
+    </form>
+
+    <!-- Main content area -->
+    <main id="content">
+        <p>This is the first paragraph to style dynamically.</p>
+        <p>This is the second paragraph to style dynamically.</p>
+        <p>This is the third paragraph to style dynamically.</p>
+    </main>
+
+    <a href="homework7.html">Back to Homework 7</a>
+
+    <script>
+        const content = document.getElementById("content");
+
+        document.getElementById("styleForm").addEventListener("change", () => {
+            // Apply Background Color
+            const bgColor = document.querySelector('input[name="bgColor"]:checked');
+            content.style.backgroundColor = bgColor ? bgColor.value : "";
+
+            // Apply Text Styles
+            content.style.fontWeight = document.getElementById("bold").checked ? "bold" : "normal";
+            content.style.fontStyle = document.getElementById("italic").checked ? "italic" : "normal";
+            content.style.textDecoration = document.getElementById("underline").checked ? "underline" : "none";
+
+            // Apply Font Size
+            const fontSize = document.getElementById("fontSize").value;
+            content.style.fontSize = fontSize;
+        });
+    </script>
+</body>
+</html>
