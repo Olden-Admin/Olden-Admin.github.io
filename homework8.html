@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 8 - AJAX Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Homework 8 - AJAX Application</h1>
+
+    <!-- Link back to the main page -->
+    <p><a href="homework1.html">Back to Homework 1 - Main Page</a></p>
+
+    <!-- AJAX Button -->
+    <button onclick="loadXML()">Show CD Collection</button>
+
+    <!-- Table to display the XML data -->
+    <div id="cdOutput">
+        <!-- The XML content will be loaded here -->
+    </div>
+
+    <script>
+        function loadXML() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    loadTable(this);
+                }
+            };
+            xhttp.open("GET", "cd_catalog.xml", true);
+            xhttp.send();
+        }
+
+        function loadTable(xml) {
+            const xmlDoc = xml.responseXML;
+            const cds = xmlDoc.getElementsByTagName("CD");
+            let table = "<table><tr><th>Title</th><th>Artist</th><th>Country</th><th>Company</th><th>Price</th><th>Year</th></tr>";
+
+            for (let i = 0; i < cds.length; i++) {
+                table += "<tr>";
+                table += "<td>" + cds[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue + "</td>";
+                table += "<td>" + cds[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue + "</td>";
+                table += "<td>" + cds[i].getElementsByTagName("COUNTRY")[0].childNodes[0].nodeValue + "</td>";
+                table += "<td>" + cds[i].getElementsByTagName("COMPANY")[0].childNodes[0].nodeValue + "</td>";
+                table += "<td>" + cds[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue + "</td>";
+                table += "<td>" + cds[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue + "</td>";
+                table += "</tr>";
+            }
+            table += "</table>";
+            document.getElementById("cdOutput").innerHTML = table;
+        }
+    </script>
+
+    <!-- Explanation of AJAX -->
+    <h2>Explanation of AJAX</h2>
+    <p>AJAX stands for Asynchronous JavaScript and XML. In this application:</p>
+    <ul>
+        <li>The <code>XMLHttpRequest</code> object is used to request data from the <code>cd_catalog.xml</code> file.</li>
+        <li>When the "Show CD Collection" button is clicked, the `loadXML()` function is called to initialize the AJAX request.</li>
+        <li>Once the data is successfully retrieved, the `loadTable()` function parses the XML data and dynamically builds an HTML table to display the CD collection.</li>
+    </ul>
+
+    <!-- REST API Report -->
+    <h2>REST API</h2>
+    <p>For this report, I have chosen the <strong>OpenWeatherMap API</strong>, a popular REST API used to retrieve real-time weather data for cities around the world.</p>
+    <p><strong>Key Details:</strong></p>
+    <ul>
+        <li><strong>Response Format:</strong> The API returns data in JSON format, which is lightweight and easy to parse.</li>
+        <li><strong>Access:</strong> A free API key is required to access the data. OpenWeatherMap provides a limited free tier and paid plans for higher usage.</li>
+        <li><strong>Pricing:</strong> Free tier includes limited requests, but paid plans are available for businesses and developers needing more features.</li>
+        <li>Documentation can be found here: <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap API Documentation</a>.</li>
+    </ul>
+
+    <!-- Extra Credit Placeholder -->
+    <h2>API Example</h2>
+    <p>This example fetches weather data using the OpenWeatherMap API (if extra credit is attempted).</p>
+    <!-- Insert working example here for extra credit -->
+</body>
+</html>
