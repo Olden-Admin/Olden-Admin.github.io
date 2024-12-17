@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 6 - Part 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Character Search in Text</h1>
+    <form id="charSearchForm">
+        <label for="contentInput">Enter text content:</label><br>
+        <textarea id="contentInput" rows="6" cols="50"></textarea><br><br>
+
+        <label for="charInput">Enter a single character:</label>
+        <input type="text" id="charInput" maxlength="1">
+        <button type="button" onclick="searchCharacter()">Search</button>
+    </form>
+    <div id="output" style="margin-top:20px; font-weight: bold;"></div>
+    <a href="hw6.html">Back to Homework 6 Main Page</a>
+
+    <script>
+        function searchCharacter() {
+            const content = document.getElementById("contentInput").value;
+            const char = document.getElementById("charInput").value;
+            const output = document.getElementById("output");
+
+            if (!char) {
+                output.textContent = "Please enter a single character.";
+                return;
+            }
+
+            const regex = new RegExp(char, "gi");
+            const matches = content.match(regex);
+
+            if (matches) {
+                output.textContent = `The character "${char}" appears ${matches.length} times in the content.`;
+            } else {
+                const newWindow = window.open("", "NotFoundWindow", "width=300,height=100,left=500,top=300");
+                newWindow.document.write(`
+                    <p>Search character "${char}" not found in the content you typed.</p>
+                    <button onclick="window.close()">Close</button>
+                `);
+                output.textContent = "";
+            }
+        }
+    </script>
+</body>
+</html>
